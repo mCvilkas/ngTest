@@ -1,15 +1,45 @@
 <!-- contact.html -->
     <div class="jumbotron text-center">
-        <h1>Contact Page</h1>
+        <h1>Secret Task Page</h1>
 
-        <p>{{ message }}</p>
+
+        <!-- <p>{{ message }}</p> -->
     </div>
-    <div class="">
-      Select your favorite language:
+  <div >
+    <h1 style="text-align:center;">Add a task</h1>
+    <input ng-model="task" ng-keyup="searchEnter()" type="text" style="display:block; margin:0
+     auto; padding:5px;font-size:15px; width:300px;">
+  </div>
+<div id="tasksToShow">
+  <ul>
+    <li ng-repeat="oneTask in tasks track by $index">
+      <input type="checkbox" ng-model="
+      oneTask.status" ng-change="statusChanged($index)">
+      <span contenteditable="false" ng-dblclick="contentEdit(oneTask.taskMessage)" ng-keydown="enterAgain(oneTask.taskMessage)" ng-model="oneTask.taskMessage" class="done-{{oneTask.status}}">
+
+        {{oneTask.taskMessage}}
+      </span>
+
+     </li>
+
+  </ul>
+</div>
+
+      <!-- Select your favorite language:
       <button ng-click="php()"> PHP</button>
       <button ng-click="javascript()">Javascript </button>
       <button ng-click="c()"> C#</button>
 
-      <p> You have selected: {{myFavLanguage}}</p>
-    </div>
+      <p> You have selected: {{myFavLanguage}}</p> -->
+
+
+
+  <!-- <div ng-init ="myFavLan=[{name:'PHP', extension:'.php'},
+  {name:'Javascript', extension:'.js'}]">
+    <p ng-repeat="language in myFavLan">
+  Name: {{language.name}}<br>
+  Extension: {{language.extension}}<br>
+    </p>
+  </div> -->
+
     <a href="/">Back</a>
